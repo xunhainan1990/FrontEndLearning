@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <span class="multiple">vdfeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffwwwwwwwwwefefefefefefefefefefefefefefefefefefefefefef</span>
+    <span class='t'></span>
+
+
+    <p id="con2">文本溢出显示省略号,文本溢出显示省略号,文本溢出显示省略号,文本溢出显示省略<span class="t2">...</span>
+    </p>
+    <!-- <script type="text/javascript" src="./message.js">
+        </script>
+        <script>
+            var message=function(data){
+                alert(data[1].title);
+            }
+        </script> -->
+</body>
+</html>
+<style>
+
+.line{
+    width: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.multiple{
+    display: inline-block;
+  height: 40px;
+  width: 250px;
+  line-height: 20px;
+  overflow: hidden;
+  font-size: 16px;
+}
+
+.t:after{
+  display: inline;
+  content: "...";
+  font-size: 16px;
+    
+}
+
+#con2{
+  position: relative;
+  height: 40px;
+  width: 250px;
+  line-height: 20px;
+  overflow: hidden;
+  padding-right: 12px;
+}  
+.t2{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+</style>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <label>网站名</label>
+        <input id='sitename'>
+        <label>网址</label>
+        <input id='site'>
+        <button id='submit' onclick="submit()">提交</button>
+    </div>
+
+    <div>
+        <label>输入网站名</label>
+        <input id='sitesearch'>
+        <button onclick="search()">查找</button>
+        <div id='showsite'></div>
+    </div>
+</body>
+<script>
+
+    function submit() {
+        let site = document.getElementById('site').value
+        let sitename = document.querySelector("#sitename").value;
+        console.log(sitename);
+        localStorage.setItem(sitename, site)
+    }
+
+    function search() {
+        let showsite=document.querySelector('#showsite');
+let sitename=document.querySelector('#sitesearch').value;
+let sitevalue=localStorage.getItem(sitename);
+showsite.innerHTML=sitevalue;
+    }
+
+</script>
+<style>
+    #showsite{
+        background-color: aqua;
+        transform: scale(2)
+    }
+</style>
+</html>
