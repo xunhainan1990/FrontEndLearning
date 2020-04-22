@@ -1,0 +1,27 @@
+#! /usr/bin/env node 
+const program=require('commander')
+const fs=require('fs')
+const handlebars=require('handlebars')
+
+const list=fs.readdirSync('./src/views')
+.filter(v=>v!='Home.vue')
+.map(v=>({
+    name:v.replace('.vue','').toLocaleLowerCase(),
+    file:v
+}))
+console.log('list++'+list[0].name)
+
+compile({list},'./src/router.js','./template/router.js.hbs')
+compile({list},'./src/App.vue','./template/App.vue.hbs')
+
+function compile(meta,filePath,templatePath){
+    console.log(templatePath)
+    if(fs.existsSync(templatePath)){
+        console.log('进来if了')
+        const content=fs.readFileSync(templatePath).toString()
+        console.log('content'+content)
+        const result=handlebars.compile(content)(meta)
+        console.log('result'+result)
+fs.writeFileSync(filePath,result)
+    }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <input type="text" v-model='message'>
+        <button v-on:click='send'>发送</button>
+        <button v-on:click='clear'>清空</button>
+
+        <div v-for="item in list">{{item}}</div>
+    </div>
+    <script>
+        const host = "http://localhost:3000"
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue',
+                list: []
+            },
+            methods: {
+                async send() {
+                    let res = await axios.post(host + '/send', {
+                        message: this.message
+                    })
+                    this.list.push(this.message)
+                },
+                async clear() {
+let res=await axios.post(host+'/clear')
+this.list=res.data
+                }
+            },
+            created: function () {
+                var _vm = this;
+                setInterval(async () => {
+                    const res = await axios.get(host + '/list')
+                    _vm.list = res.data
+                }, 1000)
+            }
+        })
+    </script>
+</body>
+
+</html>
