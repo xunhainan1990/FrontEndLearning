@@ -16,7 +16,7 @@
     "request": "^2.88.2"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "co-redis": "^2.1.1",
     "dotenv": "^8.2.0",
     "element-ui": "^2.13.0",
